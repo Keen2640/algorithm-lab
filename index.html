@@ -1,20 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Algorithm & Systems Lab</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>algorithm-lab</title>
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<header>
-  <h1>Algorithm & Systems Lab</h1>
-  <p>Visualizing algorithms, CPU caches, EE signals, and complexity metrics</p>
-</header>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">λ</span>
+        <span class="brand-name">algorithm-lab</span>
+      </div>
+      <nav class="topnav">
+        <button class="nav-item active" data-view="sorting">Sorting</button>
+        <button class="nav-item" data-view="graph" disabled title="Coming soon">Graph</button>
+        <button class="nav-item" data-view="trees" disabled title="Coming soon">Trees</button>
+        <button class="nav-item" data-view="dp" disabled title="Coming soon">DP</button>
+      </nav>
+    </header>
 
-<div id="controls"></div>
-<canvas id="visualization"></canvas>
-<div id="metrics"></div>
+    <main class="workspace">
+      <aside class="sidebar">
+        <section class="control-group">
+          <label class="control-label" for="algoSelect">Algorithm</label>
+          <select id="algoSelect">
+            <option value="bubble">Bubble Sort</option>
+            <option value="merge">Merge Sort</option>
+            <option value="quick">Quick Sort</option>
+          </select>
+        </section>
 
-<script type="module" src="src/main.js"></script>
+        <section class="control-group">
+          <label class="control-label" for="sizeRange">Array size — <span id="sizeValue">40</span></label>
+          <input type="range" id="sizeRange" min="10" max="120" value="40" />
+        </section>
+
+        <section class="control-group">
+          <label class="control-label" for="speedRange">Speed</label>
+          <input type="range" id="speedRange" min="1" max="100" value="60" />
+        </section>
+
+        <section class="control-group button-row">
+          <button id="shuffleBtn" class="btn">New array</button>
+        </section>
+
+        <section class="control-group button-row">
+          <button id="playBtn" class="btn btn-primary">Play</button>
+          <button id="stepBtn" class="btn">Step</button>
+          <button id="resetBtn" class="btn">Reset</button>
+        </section>
+
+        <section class="control-group stats">
+          <div class="stat">
+            <span class="stat-label">Comparisons</span>
+            <span class="stat-value" id="statComparisons">0</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Swaps / Writes</span>
+            <span class="stat-value" id="statSwaps">0</span>
+          </div>
+        </section>
+
+        <section class="control-group complexity" id="complexityPanel">
+          <h3>Complexity</h3>
+          <table>
+            <tbody>
+              <tr><td>Best</td><td id="cBest">—</td></tr>
+              <tr><td>Average</td><td id="cAvg">—</td></tr>
+              <tr><td>Worst</td><td id="cWorst">—</td></tr>
+              <tr><td>Space</td><td id="cSpace">—</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </aside>
+
+      <section class="canvas-wrap">
+        <canvas id="canvas"></canvas>
+        <div class="legend">
+          <span class="legend-item"><i class="swatch default"></i>unsorted</span>
+          <span class="legend-item"><i class="swatch comparing"></i>comparing</span>
+          <span class="legend-item"><i class="swatch swapping"></i>swapping / writing</span>
+          <span class="legend-item"><i class="swatch pivot"></i>pivot</span>
+          <span class="legend-item"><i class="swatch sorted"></i>sorted</span>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="src/main.js"></script>
 </body>
 </html>
