@@ -11,7 +11,7 @@
 
 const sleep = (ms) => new Promise(res => setTimeout(res, ms));
 
-/*********************** PRIORITY QUEUE *******************************/
+/*********************** THIS IS PRIORITY QUEUE *******************************/
 class PriorityQueue {
   constructor() {
     this.heap = [];
@@ -88,7 +88,7 @@ export async function bfs(graph, start, metrics, cache, renderer) {
   }
 }
 
-/* ========================== DFS ========================== */
+/* ========================== INITIALIZING DFS ========================== */
 export async function dfs(graph, start, metrics, cache, renderer) {
   const visited = Array(graph.n).fill(false);
 
@@ -110,7 +110,7 @@ export async function dfs(graph, start, metrics, cache, renderer) {
   await visit(start);
 }
 
-/* ======================== DIJKSTRA ======================= */
+/* ======================== DIJKSTRA ALGORITHIMS ======================= */
 export async function dijkstra(graph, src, metrics, cache, renderer) {
   const dist = Array(graph.n).fill(Infinity);
   dist[src] = 0;
