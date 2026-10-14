@@ -1,3 +1,5 @@
+//generating the graph toward density function
+
 export function generateGraph(n, density=0.25){
   const adj=Array.from({length:n},()=>[]);
   const positions=[];
